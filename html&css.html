@@ -87,61 +87,58 @@
                 </div>
             </nav>
 
-            <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">                
+             <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Kritik dan Saran</h5>
-                    
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                
+            
                 <div class="offcanvas-body d-flex flex-column">
-                    <form class="custom-form kritik-saran-form" action="send_kritik_saran.php" method="post" role="form">           
-                        <div class="kritik-saran-form-body">
-                            <div class="mb-4">
-                                <label class="form-label mb-2" for="kritik-saran-nama">Nama</label>
+                    <form id="kritikSaranForm" onsubmit="kirimPesan(event)">
+                        <div class="mb-4">
+                            <label class="form-label mb-2" for="nama">Nama</label>
+                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama Anda" required>
+                        </div>
             
-                                <input type="text" name="kritik-saran-nama" id="kritik-saran-nama" class="form-control" placeholder="Nama Anda" required>
-                            </div>
+                        <div class="mb-4">
+                            <label class="form-label mb-2" for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Email Anda" required>
+                        </div>
             
-                            <div class="mb-4">
-                                <label class="form-label mb-2" for="kritik-saran-email">Email</label>
+                        <div class="mb-4">
+                            <label class="form-label mb-2" for="pesan">Pesan Anda</label>
+                            <textarea name="pesan" id="pesan" class="form-control" placeholder="Tulis kritik dan saran Anda di sini" required></textarea>
+                        </div>
             
-                                <input type="email" name="kritik-saran-email" id="kritik-saran-email" class="form-control" placeholder="Email Anda" required>
-                            </div>
-            
-                            <div class="mb-4">
-                                <label class="form-label mb-2" for="kritik-saran-pesan">Pesan Anda</label>
-            
-                                <textarea name="kritik-saran-pesan" id="kritik-saran-pesan" class="form-control" placeholder="Tulis kritik dan saran Anda di sini" required></textarea>
-                            </div>
-            
-                            <div class="form-check mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                              
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    Kirim salinan ke email saya
-                                </label>
-                            </div>
-            
-                            <div class="col-lg-5 col-md-7 col-8 mx-auto">
-                                <button type="submit" class="form-control">Kirim</button>
-                            </div>
+                        <div class="col-lg-5 col-md-7 col-8 mx-auto">
+                            <button type="submit" class="form-control">Kirim</button>
                         </div>
                     </form>
             
                     <div class="mt-auto mb-5">
                         <p>
                             <strong class="text-white me-3">Ada Pertanyaan?</strong>
-            
-                            <a href="tel: 010-020-0340" class="contact-link">
-                                naufal.lutfi.toi22@polban.ac.id
-                            </a>
+                            <a href="tel:010-020-0340" class="contact-link">0896-5629-3865</a>
                         </p>
                     </div>
                 </div>
             
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L34.3,192C68.6,160,137,96,206,90.7C274.3,85,343,139,411,144C480,149,549,107,617,122.7C685.7,139,754,213,823,240C891.4,267,960,245,1029,224C1097.1,203,1166,181,1234,160C1302.9,139,1371,117,1406,106.7L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
             </div>
+            
+            <script>
+                function kirimPesan(event) {
+                    event.preventDefault();
+
+                    var nama = document.getElementById("nama").value;
+                    var email = document.getElementById("email").value;
+                    var pesan = document.getElementById("pesan").value;
+                    var text = "Halo, saya " + nama + ".\nEmail: " + email + ".\nPesan: " + pesan;
+                    var nomorWhatsApp = "6289656293865";
+                    var whatsappURL = "https://wa.me/" + nomorWhatsApp + "?text=" + encodeURIComponent(text);
+                    window.open(whatsappURL, "_blank");
+                }
+            </script>
             
             
 
