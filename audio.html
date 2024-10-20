@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Background Music</title>
+</head>
+<body>
+    <audio id="background-music" autoplay loop preload="auto">
+        <source src="John_Mayer.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Paksa pemutaran audio setelah halaman dimuat
+        const audio = document.getElementById('background-music');
+        window.addEventListener('load', () => {
+            audio.play().catch(error => {
+                console.log('Autoplay dicegah:', error);
+            });
+        });
+    </script>
+</body>
+</html>
